@@ -7,9 +7,12 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"time"
 )
 
 func main() {
+	start := time.Now() // Record the start time
+
 	// next: open the file
 	file, err := os.Open("great-gatsby.txt")
 	if err != nil {
@@ -27,6 +30,9 @@ func main() {
 
 	// next: sort the words from the highest to the lowest
 	sort_the_words(wordsCount)
+
+	elapsed := time.Since(start) // Calculate elapsed time
+	fmt.Printf("Time taken: %s\n", elapsed)
 }
 
 // next: read the words in the file and tell us how many times a word appear in the document
